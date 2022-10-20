@@ -1,6 +1,4 @@
-let body = document.querySelector("body")
-let select = document.querySelector("select")
-
+"use strict";
 
 const options = {
     method: 'GET',
@@ -10,24 +8,28 @@ const options = {
     }
 };
 
-fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FRA&q=Paris&type=CITY', options).then((response) => {
-    if (response.ok === true) {
-        console.log(response)
-        console.log(response.json())
+fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FR&q=Paris&type=CITY', options)
+    .then(response => response.json())
+    .then((response) => {
+        let position = response[0].coordinates;
 
-        response.json().then((data)=> {
-            console.log(data)
-        })
+        console.log(position);
 
-    }
-})
+        apiMetoFrance(position);
+    })
     .then(response => console.log(response))
-    .catch((err) => { console.error(err) }).finally(() => console.log("Experiment completed"));
 
-// if (reponse.ok === true) {
-//     reponse.json().then((data) => {
-//         console.log(data)
-//     })
+
+function apiMetoFrance(val) {
+    fetch(`https://api.open-meteo.com/v1/meteofrance?latitude=${val.latitude}&longitude=${val.longitude}`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response)
+        })
+        .then(response => console.log(response))
+}
+
+
 
 
 
