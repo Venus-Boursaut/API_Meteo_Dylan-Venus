@@ -24,6 +24,7 @@ nav menu{
     background: rgba(78, 193, 243, 0.901);
     border: 1px black solid;
     border-radius: 2rem;
+
 }
 
 nav li{
@@ -122,6 +123,7 @@ input{
         transform: translateX(100%);
         /* transition: 0.25s; */
         transition-duration: 500ms;
+        border-radius: 2rem 0 2rem 2rem;
 
     }
   
