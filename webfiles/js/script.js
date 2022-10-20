@@ -1,18 +1,33 @@
 let body = document.querySelector("body")
 let select = document.querySelector("select")
 
-//select.addEventListener("", ()=>{    
-fetch("https://api.open-meteo.com/v1/forecast?latitude=50.49&longitude=2.55&hourly=temperature_2m").then((reponse) => {
-    if (reponse.ok === true) {
-        reponse.json().then((data) => {
+
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'c681c124b8mshc8bc3567696761bp15bd67jsn94e3ff097d4d',
+        'X-RapidAPI-Host': 'spott.p.rapidapi.com'
+    }
+};
+
+fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FRA&q=Paris&type=CITY', options).then((response) => {
+    if (response.ok === true) {
+        console.log(response)
+        console.log(response.json())
+
+        response.json().then((data)=> {
             console.log(data)
         })
+
     }
-}).catch((err) => {
-    console.log(err)
-}).finally(() => {
-    console.log("Experiment completed")
 })
+    .then(response => console.log(response))
+    .catch((err) => { console.error(err) }).finally(() => console.log("Experiment completed"));
+
+// if (reponse.ok === true) {
+//     reponse.json().then((data) => {
+//         console.log(data)
+//     })
 
 
 
@@ -23,11 +38,10 @@ let apparitionLi = document.querySelector("ul li:last-of-type");
 let htmlMenu = document.querySelector("menu");
 
 
-meteoMenu.innerHTML="<span></span>";
+meteoMenu.innerHTML = "<span></span>";
 meteoMenu.classList.add("meteo-menu");
 
 window.addEventListener("resize", () => {
-
     meteoDisplay();
     if (window.innerWidth > 768) {
         meteoMenu.remove();
@@ -37,7 +51,6 @@ window.addEventListener("resize", () => {
 window.addEventListener("load", () => {
     meteoDisplay();
 })
-
 
 /**
  * Affiche le burger menu a partir du moment ou on atteint une resolution inferrieur a 768 px
@@ -50,12 +63,9 @@ function meteoDisplay() {
     }
 }
 
-
-meteoMenu.addEventListener("click", () =>{
+meteoMenu.addEventListener("click", () => {
     meteoMenu.classList.toggle("active");
     htmlMenu.classList.toggle("active");
     console.log("cliker")
 })
 
-
-//})
