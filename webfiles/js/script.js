@@ -1,18 +1,35 @@
-let body = document.querySelector("body")
-let select = document.querySelector("select")
+"use strict";
 
-//select.addEventListener("", ()=>{    
-fetch("https://api.open-meteo.com/v1/forecast?latitude=50.49&longitude=2.55&hourly=temperature_2m").then((reponse) => {
-    if (reponse.ok === true) {
-        reponse.json().then((data) => {
-            console.log(data)
-        })
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'c681c124b8mshc8bc3567696761bp15bd67jsn94e3ff097d4d',
+        'X-RapidAPI-Host': 'spott.p.rapidapi.com'
     }
-}).catch((err) => {
-    console.log(err)
-}).finally(() => {
-    console.log("Experiment completed")
-})
+};
+
+fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FR&q=Paris&type=CITY', options)
+    .then(response => response.json())
+    .then((response) => {
+        let position = response[0].coordinates;
+
+        console.log(position);
+
+        apiMetoFrance(position);
+    })
+    .then(response => console.log(response))
+
+
+function apiMetoFrance(val) {
+    fetch(`https://api.open-meteo.com/v1/meteofrance?latitude=${val.latitude}&longitude=${val.longitude}`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response)
+        })
+        .then(response => console.log(response))
+}
+
+
 
 
 
@@ -23,11 +40,10 @@ let apparitionLi = document.querySelector("ul li:last-of-type");
 let htmlMenu = document.querySelector("menu");
 
 
-meteoMenu.innerHTML="<span></span>";
+meteoMenu.innerHTML = "<span></span>";
 meteoMenu.classList.add("meteo-menu");
 
 window.addEventListener("resize", () => {
-
     meteoDisplay();
     if (window.innerWidth > 768) {
         meteoMenu.remove();
@@ -37,7 +53,6 @@ window.addEventListener("resize", () => {
 window.addEventListener("load", () => {
     meteoDisplay();
 })
-
 
 /**
  * Affiche le burger menu a partir du moment ou on atteint une resolution inferrieur a 768 px
@@ -50,12 +65,9 @@ function meteoDisplay() {
     }
 }
 
-
-meteoMenu.addEventListener("click", () =>{
+meteoMenu.addEventListener("click", () => {
     meteoMenu.classList.toggle("active");
     htmlMenu.classList.toggle("active");
     console.log("cliker")
 })
 
-
-//})
