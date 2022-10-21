@@ -8,28 +8,30 @@ const options = {
     }
 };
 
-fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FR&q=Toulouse&type=CITY', options)
-    .then(response => response.json())
-    .then((response) => {
-        let position = response[0].coordinates;
+let saisi = document.getElementsByClassName("saisie")[0];
 
-        console.log(position);
+saisi.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
 
-        apiMetoFrance(position);
-    })
-    .then(response => console.log(response))
-
+        fetch(`https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FR&q=${saisi.value}&type=CITY`, options)
+            .then(response => response.json())
+            .then((response) => {
+                let position = response[0].coordinates;
+                console.log(position);
+                apiMetoFrance(position);
+            })
+            .then(response => console.log(response))
+    }
+})
 
 function apiMetoFrance(val) {
-    fetch(`https://api.open-meteo.com/v1/meteofrance?latitude=${val.latitude}&longitude=${val.longitude}`)
+    fetch(`https://api.open-meteo.com/v1/meteofrance?latitude=${val.latitude}&longitude=${val.longitude}&hourly=temperature_2m&current_weather=true&timezone=Europe%2FBerlin&past_days=7`)
         .then(response => response.json())
         .then(response => {
             console.log(response)
         })
-        .then(response => console.log(response))
+        .catch(err => console.error(err));
 }
-
-
 
 
 
