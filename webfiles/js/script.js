@@ -8,7 +8,7 @@ const options = {
     }
 };
 
-fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FR&q=Paris&type=CITY', options)
+fetch('https://spott.p.rapidapi.com/places/autocomplete?limit=10&skip=0&language=%20fr&country=FR&q=Toulouse&type=CITY', options)
     .then(response => response.json())
     .then((response) => {
         let position = response[0].coordinates;
