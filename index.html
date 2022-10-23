@@ -1,52 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./webfiles/js/script.js" defer></script>
-    <link rel="stylesheet" href="./webfiles/css/styles.css">
-    <title></title>
-</head>
-<body>
-    <header>
-            <nav>
-            <ul>
-                <li><img src="./src/img/logo.png"></li>
-                <li>
-                <div class="meteo"></div>
-                <menu>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">A propos</a></li>
-                    <li><a href="">ville</a></li>
-                </menu>
-            </li>
-            </ul>
-        </nav>
 
-    </header>
-    <main>
-       
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./webfiles/js/script.js" defer></script>
+  <link rel="stylesheet" href="./webfiles/css/styles.css">
+  <title></title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><img src="./src/img/logo.png"></li>
+        <li>
+          <div class="meteo"></div>
+          <menu>
+        <li><a href="">Accueil</a></li>
+        <li><a href="">A propos</a></li>
+        <li><a href="">ville</a></li>
+        </menu>
+        </li>
+      </ul>
+    </nav>
+
+  </header>
+  <main>
+
     <!--corp de la page-->
 
     <div class="box">
-      <div class="formulaire-saisie" >       
+      <div class="formulaire-saisie">
         <h2 class="texte-second-deg-formulaire">Saisissez une Ville</h2>
         <input type="text" class="saisie">
-      </label>
+      </div>
     </div>
+
+    <div class="insertion">
+      <div>
+        <h2>temperature:</h2>
+        <h2 class="temp">00</h2>  
+      </div>
+      <div>
+        <h2>date:</h2>
+        <h2 class="date">current</h2>  
+      </div>
+      <div class="erreur-ville">
+      </div>
     </div>
 
   </main>
-    <!-- Site footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="about">
-            <h3>About</h3>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo necessitatibus officia magni commodi corrupti labore, libero aliquam voluptatibus alias at totam laboriosam ex non atque in itaque ipsum velit illum?
-            Veniam minus cum sunt nostrum, esse unde asperiores? Doloremque cumque ex earum vel illum fugit libero sit. Neque adipisci suscipit officiis amet eligendi eaque, sunt temporibus libero! Perferendis, magnam facilis?</p>
-          </div>
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="about">
+          <h3>About</h3>
+          <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo necessitatibus officia magni
+            commodi corrupti labore, libero aliquam voluptatibus alias at totam laboriosam ex non atque in itaque ipsum
+            velit illum?
+            Veniam minus cum sunt nostrum, esse unde asperiores? Doloremque cumque ex earum vel illum fugit libero sit.
+            Neque adipisci suscipit officiis amet eligendi eaque, sunt temporibus libero! Perferendis, magnam facilis?
+          </p>
+        </div>
 
         <div class="block2">
 
@@ -70,17 +88,18 @@
             </ul>
           </div>
         </div>
-        </div>
-        <hr>
       </div>
-      <div class="container">
-        <div class="ligne">
-          <div class="footer3">
-            <p class="copyright">Copyright &copy; 2022 Dylan Vaillant & Vénus Boursaut
-            </p>
-          </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="ligne">
+        <div class="footer3">
+          <p class="copyright">Copyright &copy; 2022 Dylan Vaillant & Vénus Boursaut
+          </p>
         </div>
       </div>
-</footer>
+    </div>
+  </footer>
 </body>
+
 </html>
